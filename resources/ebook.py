@@ -6,11 +6,14 @@ import requests
 class Ebook(Resource):
 
     def get(self):
+
+        #get response from url
         url = "https://www.packtpub.com/packt/offers/free-learning"
         agent = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'}
         resp = requests.get(url, headers=agent)
         #print ("Requests repponse:{}".format(resp.status_code))
 
+        #parse response
         soup = BeautifulSoup(resp.text, 'html.parser')
         dotd = soup.select('.dotd-title')
         title = dotd[0].text.strip()
