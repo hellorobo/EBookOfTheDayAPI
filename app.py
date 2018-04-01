@@ -9,5 +9,6 @@ api = Api(app)
 #routing to endpoints
 api.add_resource(Ebook, '/ebook')
 
+# entry point
 if __name__=='__main__':
     app.run(port=5001, debug=True)
