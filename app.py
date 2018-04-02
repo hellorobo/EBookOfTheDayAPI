@@ -6,8 +6,8 @@ from resources.ebook import Ebook
 app = Flask(__name__)
 api = Api(app)
 
-#routing to API endpoints
+# routing to API endpoints
 api.add_resource(Ebook, '/ebook')
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(port=5001, debug=True)
