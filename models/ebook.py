@@ -16,8 +16,7 @@ class EbookModel():
         self.url = url
         resp = requests.get(self.url, headers=self.agent)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        dotd = soup.select('.dotd-title')
-        self.title = dotd[0].text.strip()
+        self.title = soup.select('.dotd-title')[0].text.strip()
         self.description = soup.find(
             "div", class_="dotd-main-book-summary float-left").select(
             "div")[2].text.strip()
