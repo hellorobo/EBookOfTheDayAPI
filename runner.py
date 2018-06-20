@@ -2,9 +2,12 @@ from scrap import Scrap
 from dbase import Database
 from datetime import datetime
 
-url = 'https://www.packtpub.com/packt/offers/free-learning'
-con_str = 'mongodb://h7r2v6rf8p9c:BLYv98kFW5bPYwufskSG@ds016138.mlab.com:16138/packtebook' 
-db = 'packtebook' 
+dbserver = os.environ['DB_SERVER']
+dbname = os.environ['DB_NAME']
+dbuser = os.environ['DB_USER']
+dbpass = os.environ['DB_PASS']
+con_str = pymongo.MongoClient('mongodb://{}:{}@{}/{}'.format(dbuser,dbpass,dbserver,dbname))
+db = dbname
 col_freebooks = 'freebooks'
 col_logs = 'logs'
 freebooks = Database(con_str, db, col_freebooks)
